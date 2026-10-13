@@ -13,6 +13,11 @@ public class Chaudron {
 		return quantitePotion > 0;
 	}
 	
+	public Chaudron(int quantitePotion, int forcePotion) {
+		this.quantitePotion = quantitePotion;
+		this.forcePotion = forcePotion;
+	}
+
 	public int prendreLouche() {
 		if (quantitePotion>0) {
 			quantitePotion=quantitePotion-1;	

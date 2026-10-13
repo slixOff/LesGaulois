@@ -12,13 +12,13 @@ public class Druide {
 		return "Le Druide " + nom + " : ";
 	}
 	
-	private void fabriquerPotion(int quantite, int forcePotion) {
+	public void fabriquerPotion(int quantite, int forcePotion) {
 		chaudron.remplirChaudron(quantite, forcePotion);
-		System.out.println("J'ai conococté"+quantite+"doses de potion magique. Elle a une force de "+forcePotion+".");
+		System.out.println("J'ai conococté "+quantite+" doses de potion magique. Elle a une force de "+forcePotion+".");
 		
 	}
 	
-	private void booster(Gaulois gauloi) {
+	public void booster(Gaulois gauloi) {
 		if (chaudron.resterPotion()){
 			String nomGaulois = gauloi.getNom();
 			if (nomGaulois=="Obélix") {
@@ -28,13 +28,21 @@ public class Druide {
 				int forcePotion=chaudron.prendreLouche();
 				if(forcePotion>0) {
 				gauloi.boirePotion(forcePotion);
+				parler("Tiens "+nomGaulois+" un peu de potion magique.");
 				}
 				else {
-					
+					parler("Désolé "+nomGaulois+" il n'y a plus une seule goutte de potion.");
 				}
 			}
 		}
 	}
+	
+	public Druide(String nom, int force, Chaudron chaudron) {
+		this.nom = nom;
+		this.force = force;
+		this.chaudron = chaudron;
+	}
+	
 	@Override
 	public String toString() {
 		return "Druide [nom=" + nom + "]";
